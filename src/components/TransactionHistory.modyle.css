@@ -1,0 +1,23 @@
+table {
+    width: 600px;
+    margin: 0 auto 40px auto;
+  }
+  
+  tbody {
+    height: 30px;
+    background-color: #fff;
+  }
+  tbody tr:nth-child(2n) {
+    background-color: rgb(156, 241, 241);
+  }
+  thead {
+    height: 30px;
+    background-color: rgb(166, 98, 230);
+  }
+  tbody td {
+    padding-left: 10%;
+  }
+  tbody td:nth-child(2n) {
+    padding-right: 10%;
+    text-align: end;
+  }
