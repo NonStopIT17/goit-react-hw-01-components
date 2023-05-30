@@ -9,20 +9,20 @@ import friends from '../friends.json';
 import transactions from '../transactions.json';
 
 export default function App() {
-    return (
-      <div>
-        {users.map(el => (
-          <Profile
-            key={el.tag}
-            avatar={el.avatar}
-            username={el.username}
-            tag={el.tag}
-            location={el.location}
-            stats={el.stats}
-          />
-        ))}
+  const userProfile = users[0];
+  return (
+    <div>
+      <Profile
+        key={userProfile.tag}
+        avatar={userProfile.avatar}
+        username={userProfile.username}
+        tag={userProfile.tag}
+        location={userProfile.location}
+        stats={userProfile.stats}
+      />
   
-        <Statistics key="Statistics" title="Upload stats" stats={data} />
+        <Statistics title="Upload stats" stats={data} />
+        
         <ul key="FriendList" className="friend-list">
           {friends.map(el => (
             <FriendList
