@@ -1,23 +1,47 @@
 import './FriendList.modyle.css';
 import PropTypes from 'prop-types';
-export default function FriendList({ name, avatar, isOnline }) {
-  let bgColor = 'red';
-  if (isOnline) {
-    bgColor = 'green';
-  }
+
+
+function FriendList({ friends }) {
+  return (
+    <ul className="friend-list">
+      {friends.map(friend => (
+        <FriendListItem
+          key={friend.id}
+          avatar={friend.avatar}
+          name={friend.name}
+          isOnline={friend.isOnline}
+        />
+      ))}
+    </ul>
+  );
+}
+
+FriendList.propTypes = {
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      isOnline: PropTypes.bool.isRequired
+    })
+  ).isRequired
+};
+
+function FriendListItem({ avatar, name, isOnline }) {
   return (
     <li className="item">
-      <span className="status" style={{ backgroundColor: bgColor }}>
-        {isOnline}
-      </span>
-      <img className="avatar" src={avatar} alt={name} width="48" />
+      <span className={isOnline ? 'status online' : 'status offline'}></span>
+      <img className="avatar" src={avatar} alt="User avatar" width="48" />
       <p className="name">{name}</p>
     </li>
   );
 }
 
-FriendList.propTypes = {
-  name: PropTypes.string,
-  avatar: PropTypes.string,
-  isOnline: PropTypes.bool,
+FriendListItem.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isOnline: PropTypes.bool.isRequired
 };
+
+export default FriendList;

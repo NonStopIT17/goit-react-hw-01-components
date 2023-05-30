@@ -13,28 +13,15 @@ export default function App() {
   return (
     <div>
       <Profile
-        key={userProfile.tag}
-        avatar={userProfile.avatar}
-        username={userProfile.username}
-        tag={userProfile.tag}
-        location={userProfile.location}
-        stats={userProfile.stats}
+          username={userProfile.username}
+          tag={userProfile.tag}
+          location={userProfile.location}
+          avatar={userProfile.avatar}
+          stats={userProfile.stats}
       />
-  
         <Statistics title="Upload stats" stats={data} />
-        
-        <ul key="FriendList" className="friend-list">
-          {friends.map(el => (
-            <FriendList
-              key={el.id}
-              avatar={el.avatar}
-              name={el.name}
-              isOnline={el.isOnline}
-            />
-          ))}
-        </ul>
-  
-        <TransactionHistory key="TransactionHistory" items={transactions} />
+        <FriendList friends={friends} />
+        <TransactionHistory items={transactions} />
       </div>
     );
   }
