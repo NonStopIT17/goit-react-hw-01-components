@@ -1,6 +1,7 @@
-import './FriendList.modyle.css';
+import React from 'react';
 import PropTypes from 'prop-types';
 
+import './FriendList.modyle.css';
 
 function FriendList({ friends }) {
   return (

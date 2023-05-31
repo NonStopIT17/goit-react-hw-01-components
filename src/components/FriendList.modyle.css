@@ -26,7 +26,6 @@
     transform: translateY(-50%);
     top: 50%;
     left: 4%;
-    background: red;
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -43,3 +42,10 @@
   .name {
     font-weight: bold;
   }
+  .status.online {
+    background: green;
+    }
+    
+    .status.offline {
+    background: red;
+    }

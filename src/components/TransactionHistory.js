@@ -1,29 +1,38 @@
 import './TransactionHistory.modyle.css';
 import PropTypes from 'prop-types';
-export default function TransactionHistory(props) {
+
+const TransactionHistory = ({ items }) => {
   return (
     <table className="transaction-history">
-      <thead className="table">
+      <thead>
         <tr>
           <th>Type</th>
           <th>Amount</th>
           <th>Currency</th>
         </tr>
       </thead>
-
       <tbody>
-        {props.items.map(el => (
-          <tr key={el.id}>
-            <td>{el.type}</td>
-            <td>{el.amount}</td>
-            <td>{el.currency}</td>
+        {items.map(({ id, type, amount, currency }) => (
+          <tr key={id}>
+            <td>{type}</td>
+            <td>{amount}</td>
+            <td>{currency}</td>
           </tr>
         ))}
       </tbody>
     </table>
   );
-}
+};
 
 TransactionHistory.propTypes = {
-  props: PropTypes.object,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
+
+export default TransactionHistory;
